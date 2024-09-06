@@ -2,24 +2,21 @@ package org.example
 
 
 class Spending {
-    private val sum: Long
-    private val category: String
-    private val date: String
+    val sum: Long
+        get() = field
 
-    constructor (sum: Long, category: String, date: String) {
-        this.sum = sum
+    val category: String
+        get() = field
+
+    val date: String
+        get() = field
+
+
+    constructor(value: Long, category: String, date: String) {
+        this.sum = value
         this.category = category
         this.date = date
     }
-
-    fun getSum(): Long {
-        return sum
-    }
-
-    fun getCategory(): String {
-        return category
-    }
-
 
     fun printInfo() {
         println("Spending[$category; $date; $sum]")
@@ -28,8 +25,6 @@ class Spending {
 
 class SpendingArray {
     private var data: ArrayList<Spending> = ArrayList()
-
-    constructor()
 
     fun printInfo() {
         for (item in data) item.printInfo()
@@ -42,14 +37,14 @@ class SpendingArray {
     fun calcSum(): Long {
         var sum = 0L;
         for (item in data) {
-            sum += item.getSum()
+            sum += item.sum
         }
         return sum
     }
 
     fun printInfoByCategory(category: String) {
         for (item in data) {
-            if (item.getCategory() == category) {
+            if (item.category == category) {
                 item.printInfo()
             }
         }
